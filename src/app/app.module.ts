@@ -16,10 +16,17 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PostsComponent, AboutComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    PostsComponent,
+    AboutComponent,
+    PageNotFoundComponent
+  ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent]
