@@ -17,6 +17,7 @@ const appRoutes: Routes = [
     path: 'about',
     component: AboutComponent
   },
+  { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({
