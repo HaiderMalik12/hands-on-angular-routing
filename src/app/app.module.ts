@@ -1,25 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostsComponent } from './posts/posts.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  {
-    path: 'posts',
-    component: PostsComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  { path: '', redirectTo: '/posts', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +16,7 @@ const appRoutes: Routes = [
     AboutComponent,
     PageNotFoundComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
