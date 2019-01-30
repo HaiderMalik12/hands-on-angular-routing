@@ -14,7 +14,8 @@ import { PostService } from '../post.service';
 export class PostDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) {}
   post$: Observable<Post>;
   ngOnInit() {
@@ -28,5 +29,9 @@ export class PostDetailComponent implements OnInit {
         this.postService.getPost(params.get('id'))
       )
     );
+  }
+  gotoPosts() {
+    // this.router.navigateByUrl('/posts');
+    this.router.navigate(['/posts']);
   }
 }
