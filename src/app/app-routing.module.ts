@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { PostsComponent } from './posts/posts.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 const appRoutes: Routes = [
-  {
-    path: 'posts',
-    component: PostsComponent
-  },
   {
     path: 'about',
     component: AboutComponent
