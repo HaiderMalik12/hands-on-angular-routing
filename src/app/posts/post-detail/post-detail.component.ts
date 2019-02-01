@@ -17,18 +17,11 @@ export class PostDetailComponent implements OnInit {
     private postService: PostService,
     private router: Router
   ) {}
-  post$: Observable<Post>;
+  // post$: Observable<Post>;
+  post: Post;
   ngOnInit() {
-    // activated route without observable
-    // https://angular.io/guide/router#parammap-api
-    // console.log(this.route.snapshot.paramMap.get('id'));
-
-    // activated route with observable
-    this.post$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.postService.getPost(params.get('id'))
-      )
-    );
+    this.post = this.route.snapshot.data['resolveData'];
+    console.log(this.post);
   }
   gotoPosts() {
     // this.router.navigateByUrl('/posts');

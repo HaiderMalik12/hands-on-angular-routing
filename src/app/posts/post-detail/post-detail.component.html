@@ -1,4 +1,4 @@
-<div class="container" *ngIf="(post$ | async) as post">
+<div class="container" *ngIf="post">
   <h3>{{ post.title }}</h3>
   <i>{{ post.description }}</i>
   <p>{{ post.content }}</p>
