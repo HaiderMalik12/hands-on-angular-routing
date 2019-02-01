@@ -4,20 +4,33 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { Post } from './post';
-import { Observable } from 'rxjs';
+import { Post, PostResolved } from './post';
+import { Observable, of } from 'rxjs';
 import { PostService } from './post.service';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostResolver implements Resolve<Post> {
+export class PostResolver implements Resolve<PostResolved> {
   constructor(private postService: PostService) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Post> {
+  ): Observable<PostResolved> {
     const id = route.paramMap.get('id');
-    return this.postService.getPost(+id);
+    if (isNaN(+id)) {
+      const message = `id is not a number ${id}`;
+      console.error(message);
+      return of({ post: null, error: message });
+    }
+    return this.postService.getPost(+id).pipe(
+      map(post => ({ post: Post })),
+      catchError(err => {
+        const message = `Unable to load posts`;
+        console.error(message);
+        return of({ post: null, error: message });
+      })
+    );
   }
 }

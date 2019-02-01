@@ -4,3 +4,8 @@ export class Post {
   content: string;
   description: string;
 }
+
+export class PostResolved {
+  post: Post;
+  error?: string;
+}
