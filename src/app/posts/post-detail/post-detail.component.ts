@@ -15,12 +15,22 @@ export class PostDetailComponent implements OnInit {
   post: Post;
   errorMessage: string;
   ngOnInit() {
-    this.post = this.route.snapshot.data['resolveData'].post;
-    this.errorMessage = this.route.snapshot.data['resolveData'].error;
-    if (this.errorMessage) {
-      console.error(this.errorMessage);
-    }
-    console.log(this.post);
+    // this.post = this.route.snapshot.data['resolveData'].post;
+    // this.errorMessage = this.route.snapshot.data['resolveData'].error;
+    // if (this.errorMessage) {
+    //   console.error(this.errorMessage);
+    // }
+    // console.log(this.post);
+
+    // with observables
+    this.route.data.subscribe(data => {
+      this.post = data['resolveData'].post;
+      this.errorMessage = data['resolveData'].error;
+      if (this.errorMessage) {
+        console.error(this.errorMessage);
+      }
+      console.log(this.post);
+    });
   }
   gotoPosts() {
     // this.router.navigateByUrl('/posts');
