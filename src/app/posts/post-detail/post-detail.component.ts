@@ -13,8 +13,10 @@ export class PostDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
   // post$: Observable<Post>;
   post: Post;
+  errorMessage: string;
   ngOnInit() {
-    this.post = this.route.snapshot.data['resolveData'];
+    this.post = this.route.snapshot.data['resolveData'].post;
+    this.errorMessage = this.route.snapshot.data['resolveData'].error;
     console.log(this.post);
   }
   gotoPosts() {

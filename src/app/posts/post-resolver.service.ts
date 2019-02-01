@@ -25,7 +25,7 @@ export class PostResolver implements Resolve<PostResolved> {
       return of({ post: null, error: message });
     }
     return this.postService.getPost(+id).pipe(
-      map(post => ({ post: Post })),
+      map(post => ({ post: post })),
       catchError(err => {
         const message = `Unable to load posts`;
         console.error(message);
