@@ -17,6 +17,9 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     this.post = this.route.snapshot.data['resolveData'].post;
     this.errorMessage = this.route.snapshot.data['resolveData'].error;
+    if (this.errorMessage) {
+      console.error(this.errorMessage);
+    }
     console.log(this.post);
   }
   gotoPosts() {
